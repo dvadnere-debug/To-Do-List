@@ -27,22 +27,38 @@ function renderTasks() {
   completedList.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
     let li = document.createElement("li");
+
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = tasks[i].completed;
+
     let span = document.createElement("span");
     span.textContent = tasks[i].text;
+
+    let deleteButton = document.createElement("buttton");
+    deleteButton.textContent = "🗑️";
+    deleteButton.onclick = function () {
+      deleteTask(i);
+    };
+
     checkbox.addEventListener("change", function () {
       tasks[i].completed = checkbox.checked;
       renderTasks();
     });
+
     li.appendChild(checkbox);
     li.appendChild(span);
-
+    li.appendChild(deleteButton);
     if (tasks[i].completed) {
       completedList.appendChild(li);
     } else {
       taskList.appendChild(li);
     }
   }
+}
+
+//for deleting any task
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  renderTasks();
 }

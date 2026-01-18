@@ -28,3 +28,17 @@ body {
 .container {
   padding-left: 60px;
 }
+.tasks-container {
+  display: flex;
+  gap: 40px; /* space between pending & completed */
+  margin-top: 30px;
+}
+
+.pending,
+.completed {
+  width: 300px;
+}
+.delete-btn {
+  width: 14px;
+  height: 14px;
+}
